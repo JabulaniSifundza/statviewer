@@ -5,35 +5,69 @@ export const StatisticalContext = createContext();
 
 export const StatisticalContextProvider = ({children})=>{
 
+	const [player, setPlayer] = useState([]);
+	const [lastSeason, setLastSeason] = useState([]);
+	const [secondSeason, setSecondSeason] = useState([]);
+	const [thirdSeason, setThirdSeason] = useState([]);
+	const [fourthSeason, setFourthSeason] = useState([]);
+	const [fifthSeason, setFifthSeason] = useState([]);
 
-
+	const [name, setName] = useState('')
 
 
 	const searchByName = async (name)=>{
 		const response = await Ballislife.get(`/players?search=${name}`, {
 		})
 		const data = response;
-		let playerId = data.id;
+		let playerId = data.data.data[0].id;
+		let playerData = data.data.data[0];
+		console.log(playerData);
 
-		let getLastSeasonAvgs = (id)=>{
-			let seasonAvg = Ballislife.get(`/season_averages?player_ids[]=${playerId}`)
-		}
+		let getLastSeasonAvgs = await Ballislife.get(`/season_averages?season=2021&player_ids[]=${playerId}`, {
+		})
 
-		let getSecondSeasonAvgs = (id)=>{
-			let seasonAvg = Ballislife.get(`/season_averages?season=2020&player_ids[]=${playerId}`)
-		}
+		let getSecondSeasonAvgs =  await Ballislife.get(`/season_averages?season=2020&player_ids[]=${playerId}`, {
+		})
 
-		let getThirdSeasonAvgs = (id)=>{
-			let seasonAvg = Ballislife.get(`/season_averages?season=2019&player_ids[]=${playerId}`)
-		}
+		let getThirdSeasonAvgs =  await Ballislife.get(`/season_averages?season=2019&player_ids[]=${playerId}`, {
+		})
 
-		let getFourthSeasonAvgs = (id)=>{
-			let seasonAvg = Ballislife.get(`/season_averages?season=2018&player_ids[]=${playerId}`)
-		}
+		let getFourthSeasonAvgs = await Ballislife.get(`/season_averages?season=2018&player_ids[]=${playerId}`, {
+		})
 
-		let getFifthSeasonAvgs = (id)=>{
-			let seasonAvg = Ballislife.get(`/season_averages?season=2017&player_ids[]=${playerId}`)
-		}
+		let getFifthSeasonAvgs = await Ballislife.get(`/season_averages?season=2017&player_ids[]=${playerId}`, {
+		})
+
+		let playerName = `${playerData.first_name} ${playerData.last_name}`;
+		let playerPosition = `${playerData.position}`;
+		let playerHeight = `${playerData.height_feet}'${playerData.height_inches}`;
+		let playerWeight = `${playerData.weight_pounds} pounds`;
+		let playerTeam = `${playerData.team.full_name}`;
+
+		console.log(playerName);
+		console.log(playerPosition);
+		console.log(playerHeight);
+		console.log(playerWeight);
+		console.log(playerTeam);
+
+		console.log(getLastSeasonAvgs);
+		console.log(getSecondSeasonAvgs);
+		console.log(getThirdSeasonAvgs);
+		console.log(getFourthSeasonAvgs);
+		console.log(getFifthSeasonAvgs);
+
+		setLastSeason(getLastSeasonAvgs);
+		setSecondSeason(getSecondSeasonAvgs);
+		setThirdSeason(getThirdSeasonAvgs);
+		setFourthSeason(getFourthSeasonAvgs);
+		setFifthSeason(getFifthSeasonAvgs);
+		setPlayer(playerData);
+
+		setName(playerName);
 	}
 
+
+	return <StatisticalContext.Provider value={{searchByName}} >
+		{children}
+	</StatisticalContext.Provider>
 }
