@@ -12,7 +12,11 @@ export const StatisticalContextProvider = ({children})=>{
 	const [fourthSeason, setFourthSeason] = useState([]);
 	const [fifthSeason, setFifthSeason] = useState([]);
 
-	const [name, setName] = useState('')
+	const [name, setName] = useState('');
+	const [position, setPosition] = useState('');
+	const [height, setHeight] = useState('');
+	const [weight, setWeight] = useState('');
+	const [team, setTeam] = useState('');
 
 
 	const searchByName = async (name)=>{
@@ -64,10 +68,14 @@ export const StatisticalContextProvider = ({children})=>{
 		setPlayer(playerData);
 
 		setName(playerName);
+		setPosition(playerPosition);
+		setHeight(playerHeight);
+		setWeight(playerWeight);
+		setTeam(playerTeam);
 	}
 
 
-	return <StatisticalContext.Provider value={{searchByName}} >
+	return <StatisticalContext.Provider value={{searchByName, name, position, height, weight, team}} >
 		{children}
 	</StatisticalContext.Provider>
 }
