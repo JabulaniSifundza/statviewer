@@ -9,13 +9,13 @@ export default function PlayerSearch(){
 	const {searchByName} = useContext(StatisticalContext);
 
 	useEffect(()=>{
-		setSearch()
+		setSearch();
 	}, [search])
 
 
 	return (
 		<div>
-			<input type="text" placeholder="Search Player by Fullname" value={search} onBlur={(e) => setSearch(e.target.value)} />
+			<input type="text" placeholder="Search Player by Fullname" value={search} onChange={(e) => setSearch(e.target.value)} />
 			<button className="searchButton" onClick={()=> searchByName(search)}>Search</button>
 		</div>
 	)

@@ -23,6 +23,7 @@ export const StatisticalContextProvider = ({children})=>{
 		const response = await Ballislife.get(`/players?search=${name}`, {
 		})
 		const data = response;
+		console.log(data);
 		let playerId = data.data.data[0].id;
 		let playerData = data.data.data[0];
 		console.log(playerData);
