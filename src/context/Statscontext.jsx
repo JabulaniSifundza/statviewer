@@ -2,7 +2,6 @@ import {createContext, useState, useEffect} from 'react';
 import Ballislife from '../apis/Ballislife';
 
 export const StatisticalContext = createContext();
-
 export const StatisticalContextProvider = ({children})=>{
 
 	const [player, setPlayer] = useState([]);
@@ -18,6 +17,22 @@ export const StatisticalContextProvider = ({children})=>{
 	const [weight, setWeight] = useState('');
 	const [team, setTeam] = useState('');
 
+	const [points, setPoints] = useState([]);
+	const [threes, setThrees] = useState([]);
+	const [shooting, setShooting] = useState([]);
+	const [assists, setAssists] = useState([]);
+	const [blocks, setBlocks] = useState([]);
+	const [rebounds, setRebounds] = useState([]);
+	const [minutes, setMinutes] = useState([]);
+
+
+	let pointAverages = [];
+	let threePointAverages = [];
+	let shootingPctAverages = [];
+	let assistAverages = [];
+	let blockAverages = [];
+	let reboundAverages = [];
+	let minutesAverage = [];
 
 	const searchByName = async (name)=>{
 		const response = await Ballislife.get(`/players?search=${name}`, {
@@ -29,19 +44,89 @@ export const StatisticalContextProvider = ({children})=>{
 		console.log(playerData);
 
 		let getLastSeasonAvgs = await Ballislife.get(`/season_averages?season=2021&player_ids[]=${playerId}`, {
-		})
+		});
+		let lastSeasonPoints = getLastSeasonAvgs.data.data[0].pts;
+		let lastSeasonShooting = getLastSeasonAvgs.data.data[0].fg_pct;
+		let lastSeasonThrees = getLastSeasonAvgs.data.data[0].fg3_pct;
+		let lastSeasonAst = getLastSeasonAvgs.data.data[0].ast;
+		let lastSeasonBlk = getLastSeasonAvgs.data.data[0].blk;
+		let lastSeasonReb = getLastSeasonAvgs.data.data[0].reb;
+		let lastSeasonMinutes = getLastSeasonAvgs.data.data[0].min;
 
 		let getSecondSeasonAvgs =  await Ballislife.get(`/season_averages?season=2020&player_ids[]=${playerId}`, {
-		})
+		});
+		let secondSeasonPoints = getSecondSeasonAvgs.data.data[0].pts;
+		let secondSeasonShooting = getSecondSeasonAvgs.data.data[0].fg_pct;
+		let secondSeasonThrees = getSecondSeasonAvgs.data.data[0].fg3_pct;
+		let secondSeasonAst = getSecondSeasonAvgs.data.data[0].ast;
+		let secondSeasonBlk = getSecondSeasonAvgs.data.data[0].blk;
+		let secondSeasonReb = getSecondSeasonAvgs.data.data[0].reb;
+		let secondSeasonMinutes = getSecondSeasonAvgs.data.data[0].min;
+
 
 		let getThirdSeasonAvgs =  await Ballislife.get(`/season_averages?season=2019&player_ids[]=${playerId}`, {
-		})
+		});
+		let thirdSeasonPoints = getThirdSeasonAvgs.data.data[0].pts;
+		let thirdSeasonShooting = getThirdSeasonAvgs.data.data[0].fg_pct;
+		let thirdSeasonThrees = getThirdSeasonAvgs.data.data[0].fg3_pct;
+		let thirdSeasonAst = getThirdSeasonAvgs.data.data[0].ast;
+		let thirdSeasonBlk = getThirdSeasonAvgs.data.data[0].blk;
+		let thirdSeasonReb = getThirdSeasonAvgs.data.data[0].reb;
+		let thirdSeasonMinutes = getThirdSeasonAvgs.data.data[0].min;
 
 		let getFourthSeasonAvgs = await Ballislife.get(`/season_averages?season=2018&player_ids[]=${playerId}`, {
-		})
+		});
+		let fourthSeasonPoints = getFourthSeasonAvgs.data.data[0].pts;
+		let fourthSeasonShooting = getFourthSeasonAvgs.data.data[0].fg_pct;
+		let fourthSeasonThrees = getFourthSeasonAvgs.data.data[0].fg3_pct;
+		let fourthSeasonAst = getFourthSeasonAvgs.data.data[0].ast;
+		let fourthSeasonBlk = getFourthSeasonAvgs.data.data[0].blk;
+		let fourthSeasonReb = getFourthSeasonAvgs.data.data[0].reb;
+		let fourthSeasonMinutes = getFourthSeasonAvgs.data.data[0].min;
 
 		let getFifthSeasonAvgs = await Ballislife.get(`/season_averages?season=2017&player_ids[]=${playerId}`, {
-		})
+		});
+		let fifthSeasonPoints = getFifthSeasonAvgs.data.data[0].pts;
+		let fifthSeasonShooting = getFifthSeasonAvgs.data.data[0].fg_pct;
+		let fifthSeasonThrees = getFifthSeasonAvgs.data.data[0].fg3_pct;
+		let fifthSeasonAst = getFifthSeasonAvgs.data.data[0].ast;
+		let fifthSeasonBlk = getFifthSeasonAvgs.data.data[0].blk;
+		let fifthSeasonReb = getFifthSeasonAvgs.data.data[0].reb;
+		let fifthSeasonMinutes = getFifthSeasonAvgs.data.data[0].min;
+
+
+		const getPointAverages = ()=>{
+			pointAverages.push(lastSeasonPoints, secondSeasonPoints, thirdSeasonPoints, fourthSeasonPoints, fifthSeasonPoints);
+			return pointAverages;
+		};
+		const getThreePointAverages = () =>{
+			threePointAverages.push(lastSeasonThrees, secondSeasonThrees, thirdSeasonThrees, fourthSeasonThrees, fifthSeasonThrees);
+			return threePointAverages;
+		};
+		const getShootingAverages = () =>{
+			shootingPctAverages.push(lastSeasonShooting, secondSeasonShooting, thirdSeasonShooting, fourthSeasonShooting, fifthSeasonShooting);
+			return shootingPctAverages;
+		}
+
+		const getAssistAverages = ()=>{
+			assistAverages.push(lastSeasonAst, secondSeasonAst, thirdSeasonAst, fourthSeasonAst, fifthSeasonAst);
+			return assistAverages;
+		}
+
+		const getBlockAverages = ()=>{
+			blockAverages.push(lastSeasonBlk, secondSeasonBlk, thirdSeasonBlk, fourthSeasonBlk, fifthSeasonBlk);
+			return blockAverages;
+		}
+
+		const getReboundAverages = ()=>{
+			reboundAverages.push(lastSeasonReb, secondSeasonReb, thirdSeasonReb, fourthSeasonReb, fifthSeasonReb);
+			return reboundAverages;
+		}
+
+		const getMinuteAverages = ()=>{
+			minutesAverage.push(lastSeasonMinutes, secondSeasonMinutes, thirdSeasonMinutes, fourthSeasonMinutes, fifthSeasonMinutes);
+			return minutesAverage;
+		}
 
 		let playerName = `${playerData.first_name} ${playerData.last_name}`;
 		let playerPosition = `${playerData.position}`;
@@ -73,10 +158,18 @@ export const StatisticalContextProvider = ({children})=>{
 		setHeight(playerHeight);
 		setWeight(playerWeight);
 		setTeam(playerTeam);
+
+		setPoints(getPointAverages);
+		setThrees(getThreePointAverages);
+		setShooting(getShootingAverages);
+		setAssists(getAssistAverages);
+		setBlocks(getBlockAverages);
+		setRebounds(getReboundAverages);
+		setMinutes(getMinuteAverages);
+
+
 	}
-
-
-	return <StatisticalContext.Provider value={{searchByName, name, position, height, weight, team}} >
+	return <StatisticalContext.Provider value={{searchByName, name, position, height, weight, team, points, threes, shooting, assists, blocks, rebounds, minutes}} >
 		{children}
 	</StatisticalContext.Provider>
 }
