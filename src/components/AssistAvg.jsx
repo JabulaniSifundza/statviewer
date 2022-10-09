@@ -26,7 +26,7 @@ export default function ShootingPctAvg(){
 				stops: [0, 90, 100]
 			}
 		},
-		colors: ["#CC2228"],
+		colors:"#CC2228",
 		xaxis:{
 			type: 'year',
 			categories:[2017, 2018, 2019, 2020, 2021],

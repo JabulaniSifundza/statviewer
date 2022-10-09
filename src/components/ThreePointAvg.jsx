@@ -15,7 +15,8 @@ export default function ThreePointAvg(){
 	const options ={
 		chart:{
 			height: 400,
-			type: "area"
+			type: 'bar',
+
 		},
 		fill:{
 			type: "gradient",
@@ -41,6 +42,7 @@ export default function ThreePointAvg(){
 				text: 'Three Point Shot Percentage',
 				colors: "#000000"
 			  },
+			min: 0,
 			labels: {
 				style: {
 				  colors: "#000000"

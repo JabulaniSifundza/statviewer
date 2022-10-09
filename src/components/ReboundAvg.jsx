@@ -15,7 +15,8 @@ export default function BlockAvg(){
 	const options ={
 		chart:{
 			height: 400,
-			type: "area"
+			type: 'bar',
+
 		},
 		fill:{
 			type: "gradient",

@@ -14,22 +14,17 @@ export default function BlockAvg(){
 
 	const options ={
 		chart:{
-			height: 400,
-			type: "area"
+			height: 500,
+			type: 'area'
+
 		},
-		fill:{
-			type: "gradient",
-			gradient:{
-				shadeIntensity: 1,
-				opacityFrom: 0.7,
-				opacityTo: 0.9,
-				stops: [0, 90, 100]
-			}
+		colors:["#FF1654", "#247BA0"],
+		stroke: {
+			curve: 'smooth'
 		},
-		colors: ["#33348E"],
 		xaxis:{
 			type: 'year',
-			categories:[2017, 2018, 2019, 2020, 2021],
+			categories:[2016, 2017, 2018, 2019, 2020, 2021, 2022],
 			labels: {
 				style: {
 				  colors: "#000000"

@@ -3,19 +3,19 @@ import {useContext} from 'react';
 import {StatisticalContext} from '../context/Statscontext';
 import styled from "styled-components";
 
-import AssistAvg from './components/AssistAvg';
-import BlockAvg from './components/BlockAvg';
-import MinuteAvg from './components/MinuteAvg';
-import PointAvg from './components/PointAvg';
-import ReboundAvg from './components/ReboundAvg';
-import ScoringOverview from './components/ScoringOverview';
-import ShootingPctAvg from './components/ShootingPctAvg';
-import StatOverview from './components/StatOverview';
-import ThreePointAvg from './components/ThreePointAvg';
+import AssistAvg from './AssistAvg';
+import BlockAvg from './BlockAvg';
+import MinuteAvg from './MinuteAvg';
+import PointAvg from './PointAvg';
+import ReboundAvg from './ReboundAvg';
+import ScoringOverview from './ScoringOverview';
+import ShootingPctAvg from './ShootingPctAvg';
+import StatOverview from './StatOverview';
+import ThreePointAvg from './/ThreePointAvg';
 
 export default function Statisticgraphs(){
-	const desiredStat = ["Assists", "Blocks", "Minutes", "Overview", "Point Average", "Rebounds", "Scoring", "Scoring", "Shooting", "Three Pointers"];
-
+	const desiredStat = [ "Blocks", "Minutes", "Overview", "Point Average", "Rebounds", "Scoring", "Shooting", "Three Pointers"];
+	const [statType, setStatType] = useState('');
 
 	return (
 		<>
@@ -24,7 +24,8 @@ export default function Statisticgraphs(){
 				{
 					desiredStat.map(stats =>{
 						return (
-						<button type="button" key={stats} className="selectStat">
+						<button type="button" key={stats} className="selectStat"
+						onClick={()=> setStatType(stats)}>
 						{stats.toLocaleUpperCase}
 						</button>
 						)
@@ -32,7 +33,20 @@ export default function Statisticgraphs(){
 				}
 				</div>
 
-				<div className="statGraphs"></div>
+				<div className="statGraphs">
+					<div>
+						
+						{statType === "Blocks" && (<BlockAvg />)}
+						{statType === "Minutes" && (<MinuteAvg />)}					
+						{statType === "Overview" && (<StatOverview />)}
+						{statType === "Point Average" && (<PointAvg />)}
+						{statType === "Rebounds" && (<ReboundAvg />)}
+						{statType === "Scoring" && (<ScoringOverview />)}
+						{statType === "Shooting" && (<ShootingPctAvg />)}
+						{statType === "Three Pointers" && (<ThreePointAvg />)}
+					</div>
+				
+				</div>
 			</Container>	
 		</>
 	)
