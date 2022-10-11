@@ -16,7 +16,6 @@ export default function BlockAvg(){
 		chart:{
 			height: 500,
 			type: 'area'
-
 		},
 		colors:["#FF1654", "#247BA0"],
 		stroke: {
