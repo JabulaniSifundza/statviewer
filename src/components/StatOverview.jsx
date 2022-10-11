@@ -39,17 +39,18 @@ export default function StatOverview(){
 			}
 		},
 		fill: {
-			opacity: [0.85, 0.25, 1],
+			opacity: [0.75, 0.95, 1],
 			gradient: {
 			  inverseColors: false,
 			  shade: 'light',
 			  type: "vertical",
-			  opacityFrom: 0.85,
-			  opacityTo: 0.55,
+			  opacityFrom: 0.65,
+			  opacityTo: 0.25,
 			  stops: [0, 100, 100, 100]
 			}
 		},
 		labels: ['2017', '2018', '2019', '2020', '2021'],
+		colors:["#33348E", " #d4af37", "#CC2228"],
 		markers: {
 			size: 0
 		},

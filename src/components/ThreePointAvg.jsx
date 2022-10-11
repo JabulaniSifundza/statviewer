@@ -15,7 +15,7 @@ export default function ThreePointAvg(){
 	const options ={
 		chart:{
 			height: 400,
-			type: 'bar',
+			type: 'area'
 
 		},
 		fill:{
@@ -28,6 +28,9 @@ export default function ThreePointAvg(){
 			}
 		},
 		colors: ["#CC2228"],
+		stroke: {
+			curve: 'smooth'
+		},
 		xaxis:{
 			type: 'year',
 			categories:[2017, 2018, 2019, 2020, 2021],

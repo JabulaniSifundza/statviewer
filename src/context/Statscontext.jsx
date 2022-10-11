@@ -26,13 +26,13 @@ export const StatisticalContextProvider = ({children})=>{
 	const [minutes, setMinutes] = useState([]);
 
 
-	let pointAverages = [];
-	let threePointAverages = [];
-	let shootingPctAverages = [];
-	let assistAverages = [];
-	let blockAverages = [];
-	let reboundAverages = [];
-	let minutesAverage = [];
+	
+	
+	
+	
+	
+
+	
 
 	const searchByName = async (name)=>{
 		const response = await Ballislife.get(`/players?search=${name}`, {
@@ -52,6 +52,7 @@ export const StatisticalContextProvider = ({children})=>{
 		let lastSeasonBlk = getLastSeasonAvgs.data.data[0].blk;
 		let lastSeasonReb = getLastSeasonAvgs.data.data[0].reb;
 		let lastSeasonMinutes = getLastSeasonAvgs.data.data[0].min;
+		console.log(lastSeasonPoints);
 
 		let getSecondSeasonAvgs =  await Ballislife.get(`/season_averages?season=2020&player_ids[]=${playerId}`, {
 		});
@@ -95,36 +96,41 @@ export const StatisticalContextProvider = ({children})=>{
 		let fifthSeasonMinutes = getFifthSeasonAvgs.data.data[0].min;
 
 
+
 		const getPointAverages = ()=>{
-			pointAverages.push(lastSeasonPoints, secondSeasonPoints, thirdSeasonPoints, fourthSeasonPoints, fifthSeasonPoints);
+			let pointAverages = [lastSeasonPoints, secondSeasonPoints, thirdSeasonPoints, fourthSeasonPoints, fifthSeasonPoints];
+
 			return pointAverages;
 		};
 		const getThreePointAverages = () =>{
-			threePointAverages.push(lastSeasonThrees, secondSeasonThrees, thirdSeasonThrees, fourthSeasonThrees, fifthSeasonThrees);
+			let threePointAverages = [lastSeasonThrees, secondSeasonThrees, thirdSeasonThrees, fourthSeasonThrees, fifthSeasonThrees];
 			return threePointAverages;
 		};
 		const getShootingAverages = () =>{
-			shootingPctAverages.push(lastSeasonShooting, secondSeasonShooting, thirdSeasonShooting, fourthSeasonShooting, fifthSeasonShooting);
+			let shootingPctAverages = [lastSeasonShooting, secondSeasonShooting, thirdSeasonShooting, fourthSeasonShooting, fifthSeasonShooting];
+		
 			return shootingPctAverages;
 		}
 
 		const getAssistAverages = ()=>{
-			assistAverages.push(lastSeasonAst, secondSeasonAst, thirdSeasonAst, fourthSeasonAst, fifthSeasonAst);
+			let assistAverages = [lastSeasonAst, secondSeasonAst, thirdSeasonAst, fourthSeasonAst, fifthSeasonAst];
+			
 			return assistAverages;
 		}
 
 		const getBlockAverages = ()=>{
-			blockAverages.push(lastSeasonBlk, secondSeasonBlk, thirdSeasonBlk, fourthSeasonBlk, fifthSeasonBlk);
+			let blockAverages = [lastSeasonBlk, secondSeasonBlk, thirdSeasonBlk, fourthSeasonBlk, fifthSeasonBlk];
 			return blockAverages;
 		}
 
 		const getReboundAverages = ()=>{
-			reboundAverages.push(lastSeasonReb, secondSeasonReb, thirdSeasonReb, fourthSeasonReb, fifthSeasonReb);
+			let reboundAverages = [lastSeasonReb, secondSeasonReb, thirdSeasonReb, fourthSeasonReb, fifthSeasonReb];
+		
 			return reboundAverages;
 		}
 
 		const getMinuteAverages = ()=>{
-			minutesAverage.push(lastSeasonMinutes, secondSeasonMinutes, thirdSeasonMinutes, fourthSeasonMinutes, fifthSeasonMinutes);
+			let minutesAverage = [lastSeasonMinutes, secondSeasonMinutes, thirdSeasonMinutes, fourthSeasonMinutes, fifthSeasonMinutes];
 			return minutesAverage;
 		}
 
@@ -134,23 +140,13 @@ export const StatisticalContextProvider = ({children})=>{
 		let playerWeight = `${playerData.weight_pounds} pounds`;
 		let playerTeam = `${playerData.team.full_name}`;
 
-		console.log(playerName);
-		console.log(playerPosition);
-		console.log(playerHeight);
-		console.log(playerWeight);
-		console.log(playerTeam);
+		
 
-		console.log(getLastSeasonAvgs);
-		console.log(getSecondSeasonAvgs);
-		console.log(getThirdSeasonAvgs);
-		console.log(getFourthSeasonAvgs);
-		console.log(getFifthSeasonAvgs);
-
-		setLastSeason(getLastSeasonAvgs);
-		setSecondSeason(getSecondSeasonAvgs);
-		setThirdSeason(getThirdSeasonAvgs);
-		setFourthSeason(getFourthSeasonAvgs);
-		setFifthSeason(getFifthSeasonAvgs);
+		//setLastSeason(getLastSeasonAvgs);
+		//setSecondSeason(getSecondSeasonAvgs);
+		//setThirdSeason(getThirdSeasonAvgs);
+		//setFourthSeason(getFourthSeasonAvgs);
+		//setFifthSeason(getFifthSeasonAvgs);
 		setPlayer(playerData);
 
 		setName(playerName);

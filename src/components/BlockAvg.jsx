@@ -6,7 +6,7 @@ import Chart from 'react-apexcharts';
 
 export default function BlockAvg(){
 	const {blocks} = useContext(StatisticalContext);
-
+	console.log(blocks);
 	const series =[{
 		name: "Blocks Per Game",
 		data: blocks
@@ -24,7 +24,7 @@ export default function BlockAvg(){
 		},
 		xaxis:{
 			type: 'year',
-			categories:[2016, 2017, 2018, 2019, 2020, 2021, 2022],
+			categories:[2017, 2018, 2019, 2020, 2021],
 			labels: {
 				style: {
 				  colors: "#000000"

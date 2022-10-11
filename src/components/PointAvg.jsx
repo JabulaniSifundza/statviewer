@@ -6,6 +6,7 @@ import Chart from 'react-apexcharts';
 
 export default function PointAvg(){
 	const {points} = useContext(StatisticalContext);
+	console.log(points)
 
 	const series =[{
 		name: "Points Per Game",
@@ -15,7 +16,7 @@ export default function PointAvg(){
 	const options ={
 		chart:{
 			height: 400,
-			type: "bar"
+			type: "area"
 		},
 		fill:{
 			type: "gradient",
@@ -27,9 +28,12 @@ export default function PointAvg(){
 			}
 		},
 		colors: ["#33348E"],
+		stroke: {
+			curve: 'smooth'
+		},
 		xaxis:{
 			type: 'year',
-			categories:[2017, 2018, 2019, 2020, 2021],
+			categories:["2017", "2018", "2019", "2020", "2021"],
 			labels: {
 				style: {
 				  colors: "#000000"

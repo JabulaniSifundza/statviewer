@@ -50,6 +50,7 @@ export default function StatOverview(){
 			}
 		},
 		labels: [2017, 2018, 2019, 2020, 2021],
+		colors:["#33348E", " #d4af37", "#CC2228"],
 		markers: {
 			size: 0
 		},
