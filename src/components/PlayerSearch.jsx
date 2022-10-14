@@ -24,7 +24,7 @@ export default function PlayerSearch(){
 
 const Container = styled.div`
 margin-left:;
-margin-top: 30px;
+margin-top: 20px;
 input{
 	border-bottom: 2px solid #000000;
 	border-right: none;

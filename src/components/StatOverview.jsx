@@ -84,7 +84,7 @@ export default function StatOverview(){
 		<div className="titleCont">
 			<h3>Points, Assists and Minutes Per Game</h3>
 		</div>
-		<Chart options ={options} series={series} width="80%" />
+		<Chart options ={options} series={series}  width="88%" />
 	</Container>
 }
 

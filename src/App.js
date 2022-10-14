@@ -24,6 +24,7 @@ function App() {
 const GlobalStyle = createGlobalStyle`
 body{
 	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
 }
 `
 

@@ -53,7 +53,7 @@ export default function ShootingPctAvg(){
 		<div className="graphTitle">
 			<h3 className="title">Assists Per Game</h3>
 		</div>
-		<Chart options={options} series={series} width="80%" />
+		<Chart options={options} series={series} width="88%" />
 	</Container>
 }
 

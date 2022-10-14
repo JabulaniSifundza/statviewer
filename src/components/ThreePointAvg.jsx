@@ -58,7 +58,7 @@ export default function ThreePointAvg(){
 		<div className="graphTitle">
 			<h3 className="title">Three Point Shot Accuracy</h3>
 		</div>
-		<Chart options={options} series={series} width="80%" />
+		<Chart options={options} series={series}  width="88%" />
 	</Container>
 }
 

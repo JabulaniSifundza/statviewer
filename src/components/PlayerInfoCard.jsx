@@ -2,6 +2,7 @@ import React from 'react';
 import {useContext} from 'react';
 import {StatisticalContext} from '../context/Statscontext';
 import styled from "styled-components";
+import nbaLogo from '../images/nbaLogo.png';
 
 export default function PlayerInfoCard(){
 
@@ -13,7 +14,7 @@ export default function PlayerInfoCard(){
 				<h3 className="playerName">
 				{name}
 				</h3>
-				<img src="" alt="Nba Logo" />
+				<img src={nbaLogo} alt="Nba Logo"/>
 			
 			</div>
 			<div className="infoHolder">
@@ -49,12 +50,12 @@ border-radius: 18px;
 	border-radius:;
 	z-index: 4;
 	img{
-		width: 380px;
-		height 300px;
+		width: 100px;
+		height 200px;
 	}
 	.playerName{
 		text-align: center;
-		margin-top: 12px;
+		margin-top: 16px;
 		margin-bottom: 36px;
 		font-size: 2.25rem;
 	}

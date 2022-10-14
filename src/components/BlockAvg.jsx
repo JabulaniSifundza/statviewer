@@ -14,7 +14,7 @@ export default function BlockAvg(){
 
 	const options ={
 		chart:{
-			height: 500,
+			height: 390,
 			type: 'area'
 		},
 		colors:["#FF1654", "#247BA0"],
@@ -47,7 +47,7 @@ export default function BlockAvg(){
 		<div className="graphTitle">
 			<h3 className="title">Blocks Per Game</h3>
 		</div>
-		<Chart options={options} series={series} width="80%" />
+		<Chart options={options} series={series} width="88%" />
 	</Container>
 }
 

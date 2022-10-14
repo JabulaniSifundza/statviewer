@@ -14,7 +14,7 @@ export default function ShootingPctAvg(){
 
 	const options ={
 		chart:{
-			height: 400,
+			height: 390,
 			type: "area"
 		},
 		fill:{
@@ -56,7 +56,7 @@ export default function ShootingPctAvg(){
 		<div className="graphTitle">
 			<h3 className="title">Shooting Accuracy</h3>
 		</div>
-		<Chart options={options} series={series} width="80%" />
+		<Chart options={options} series={series} width="88%" />
 	</Container>
 }
 

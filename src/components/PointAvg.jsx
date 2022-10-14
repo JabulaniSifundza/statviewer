@@ -57,7 +57,7 @@ export default function PointAvg(){
 		<div className="graphTitle">
 			<h3 className="title">Points Per Game</h3>
 		</div>
-		<Chart options={options} series={series} width="80%" />
+		<Chart options={options} series={series} width="88%" />
 	</Container>
 }
 

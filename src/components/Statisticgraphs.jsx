@@ -14,19 +14,19 @@ import StatOverview from './StatOverview';
 import ThreePointAvg from './/ThreePointAvg';
 
 export default function Statisticgraphs(){
-	const desiredStat = [ "Blocks", "Minutes", "Overview", "Point Average", "Rebounds", "Scoring", "Shooting", "Three Pointers"];
+	const desiredStat = [ "Blocks", "Overview", "Point Average", "Rebounds", "Scoring", "Shooting", "Three Pointers"];
 	const [statType, setStatType] = useState('');
 
 	return (
 		<>
 			<Container>
-				<div className="oprions">
+				<div className="options">
 				{
 					desiredStat.map(stats =>{
 						return (
 						<button type="button" key={stats} className="selectStat"
 						onClick={()=> setStatType(stats)}>
-						{stats.toLocaleUpperCase}
+						{stats}
 						</button>
 						)
 					})
@@ -35,9 +35,7 @@ export default function Statisticgraphs(){
 
 				<div className="statGraphs">
 					<div>
-						
-						{statType === "Blocks" && (<BlockAvg />)}
-						{statType === "Minutes" && (<MinuteAvg />)}					
+						{statType === "Blocks" && (<BlockAvg />)}					
 						{statType === "Overview" && (<StatOverview />)}
 						{statType === "Point Average" && (<PointAvg />)}
 						{statType === "Rebounds" && (<ReboundAvg />)}
@@ -52,4 +50,32 @@ export default function Statisticgraphs(){
 	)
 }
 
-const Container = styled.div``
+const Container = styled.div`
+width: 74%;
+top: 0;
+margin-left: 410px;
+margin-top: -580px;
+.options{
+	width: 90%;
+	.selectStat{
+		width: 120px;
+		height: 60px;
+		color: #FFFFFF;
+		background-color: #33348E;
+		border: none;
+		border-radius: 12px;
+		margin: 2px;
+		font-family: 'Poppins', sans-serif;
+		font-size: 0.90rem
+	}
+	.selectStat: active{
+		border: 1px solid #000000;
+	}
+	.selectStat:focus{
+		border: 3px solid #000000;
+	}
+}
+.statGraphs{
+	width: 100%;
+}
+`
