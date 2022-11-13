@@ -11,7 +11,7 @@ import ReboundAvg from './ReboundAvg';
 import ScoringOverview from './ScoringOverview';
 import ShootingPctAvg from './ShootingPctAvg';
 import StatOverview from './StatOverview';
-import ThreePointAvg from './/ThreePointAvg';
+import ThreePointAvg from './ThreePointAvg';
 
 export default function Statisticgraphs(){
 	const desiredStat = [ "Blocks", "Overview", "Point Average", "Rebounds", "Scoring", "Shooting", "Three Pointers"];
